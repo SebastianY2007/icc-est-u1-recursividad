@@ -1,25 +1,21 @@
 public class Recursividad {
-    public static int sumaConsecutivos(int n) {
+    
+    public int llamadaRecursiva = 1;
+    
+    public int sumaConsecutivos(int n ) {    
+        int idActual = llamadaRecursiva++;
+        System.out.println("Llamada a "+idActual+" con numero n = "+n);
         if (n == 1) {
+            System.out.println("Llamada a "+idActual+" caso base alcanzado n = 1 ");
             return 1;
         } else {
-            return n + sumaConsecutivos(n - 1);
-        }
-    }
-
-    public static int potencia(int base, int exponente) {
-        if (exponente == 0) {
-            return 1;
-        } else {
-            return base * potencia(base, exponente - 1);
-        }
-    }
-
-    public static int sumaDigitos(int numero) {
-        if (numero < 10) {
-            return numero;
-        } else {
-            return (numero % 10) + sumaDigitos(numero / 10);
+            // return n + sumaConsecutivos(n - 1);
+            System.out.println("Llamada a "+idActual+" Llamando recursivamente con n = "+(n-1));
+            int resultadoParcial = sumaConsecutivos(n - 1);
+            int resultado = n + resultadoParcial;
+            System.out.println("Llamada a "+idActual+" sumando "+n+" al resultado de "+resultadoParcial+ " = "+resultado);
+            System.out.println("Llamada a "+idActual+" Retorno "+resultado);
+            return resultado;
         }
     }
 }
